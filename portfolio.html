@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandru K - Data Scientist Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #faf8f3;
+            --charcoal: #1a1a1a;
+            --gold: #d4a574;
+            --sage: #7a9b8e;
+            --slate: #4a5568;
+            --accent-dark: #2d3748;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 6%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10rem 6% 6rem;
+            position: relative;
+            background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(212, 165, 116, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            width: 100%;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero .greeting {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 9vw, 7rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+            letter-spacing: -2px;
+        }
+
+        .hero .tagline {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            color: var(--slate);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 700px;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--slate);
+            margin-bottom: 3rem;
+            max-width: 650px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 2px;
+            transition: all 0.4s ease;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--charcoal);
+            color: var(--cream);
+            border: 2px solid var(--charcoal);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--charcoal);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--charcoal);
+            border: 2px solid var(--charcoal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: var(--cream);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 8rem 6%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 5rem;
+            text-align: center;
+        }
+
+        .section-label {
+            font-size: 0.9rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--charcoal);
+            letter-spacing: -1px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--slate);
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            background: white;
+            border-left: 3px solid var(--gold);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--slate);
+            font-weight: 500;
+        }
+
+        /* Expertise Section */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .expertise-card {
+            background: white;
+            padding: 3rem;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--sage));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .expertise-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .expertise-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .expertise-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .expertise-card p {
+            color: var(--slate);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .tech-tag {
+            background: var(--cream);
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            color: var(--charcoal);
+            font-weight: 500;
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+        }
+
+        /* Projects Section */
+        #projects {
+            background: linear-gradient(135deg, #f5f1e8 0%, #faf8f3 100%);
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 4rem;
+        }
+
+        .project-item {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+            background: white;
+            padding: 3rem;
+            transition: all 0.4s ease;
+        }
+
+        .project-item:nth-child(even) {
+            grid-template-columns: 1.5fr 1fr;
+        }
+
+        .project-item:nth-child(even) .project-content {
+            order: 2;
+        }
+
+        .project-item:nth-child(even) .project-visual {
+            order: 1;
+        }
+
+        .project-item:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .project-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gold);
+            opacity: 0.2;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .project-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .project-content p {
+            color: var(--slate);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-visual {
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(122, 155, 142, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--gold);
+            border: 2px solid rgba(212, 165, 116, 0.2);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--sage));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 3px solid var(--cream);
+        }
+
+        .timeline-year {
+            font-size: 0.9rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .timeline-company {
+            font-size: 1.1rem;
+            color: var(--sage);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .timeline-item ul {
+            margin-left: 1.5rem;
+            color: var(--slate);
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.7rem;
+            line-height: 1.7;
+        }
+
+        /* Resume Section */
+        #resume {
+            background: white;
+        }
+
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--cream);
+            padding: 4rem;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .resume-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .resume-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .resume-header .title {
+            font-size: 1.2rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .resume-contact {
+            font-size: 0.95rem;
+            color: var(--slate);
+            line-height: 1.8;
+        }
+
+        .resume-section {
+            margin-bottom: 3rem;
+        }
+
+        .resume-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .resume-item {
+            margin-bottom: 2rem;
+        }
+
+        .resume-item h4 {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-bottom: 0.3rem;
+        }
+
+        .resume-meta {
+            color: var(--slate);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+
+        .resume-item ul {
+            margin-left: 1.5rem;
+            color: var(--slate);
+        }
+
+        .resume-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-list {
+            line-height: 2;
+            color: var(--slate);
+        }
+
+        .skills-list strong {
+            color: var(--charcoal);
+        }
+
+        .download-btn {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--charcoal);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        #contact .section-label {
+            color: var(--gold);
+        }
+
+        #contact .section-title {
+            color: var(--cream);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-item {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(212, 165, 116, 0.1);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .contact-item h4 {
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .contact-item a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            width: 120px;
+            height: 60px;
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--gold);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gold);
+            color: var(--charcoal);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--accent-dark);
+            color: var(--cream);
+            text-align: center;
+            padding: 2rem 6%;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .project-item,
+            .project-item:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+
+            .project-item:nth-child(even) .project-content,
+            .project-item:nth-child(even) .project-visual {
+                order: initial;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 5rem 5%;
+            }
+
+            .hero {
+                padding: 8rem 5% 5rem;
+            }
+
+            nav ul {
+                gap: 1.2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-container {
+                padding: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="greeting">Hello, I'm</div>
+            <h1>Chandru K</h1>
+            <div class="tagline">Data Scientist & AI Engineer</div>
+            <p class="description">
+                Transforming complex data into actionable insights through machine learning, 
+                deep learning, and generative AI. Passionate about solving real-world problems 
+                with innovative data-driven solutions.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header fade-in">
+            <div class="section-label">Who I Am</div>
+            <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <h3>Building the future with data and intelligence</h3>
+                <p>
+                    I'm a Data Scientist with expertise in machine learning, deep learning, and 
+                    generative AI. Currently pursuing my Master's in Data Science at Annamalai 
+                    University, I combine strong academic foundations with hands-on project experience.
+                </p>
+                <p>
+                    My work spans from building RAG-powered chatbots to developing predictive models 
+                    for healthcare and finance. I thrive in collaborative environments where I can 
+                    apply cutting-edge AI technologies to solve meaningful problems.
+                </p>
+                <p>
+                    When I'm not coding or training models, I'm exploring the latest developments 
+                    in AI research, contributing to open-source projects, and continuously learning 
+                    new technologies to stay at the forefront of this rapidly evolving field.
+                </p>
+            </div>
+            <div class="stats fade-in">
+                <div class="stat-item">
+                    <div class="stat-number">8.5</div>
+                    <div class="stat-label">CGPA in Master's</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4+</div>
+                    <div class="stat-label">Major Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">A+</div>
+                    <div class="stat-label">Certification Grade</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Technologies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise">
+        <div class="section-header fade-in">
+            <div class="section-label">What I Do</div>
+            <h2 class="section-title">My Expertise</h2>
+        </div>
+        <div class="expertise-grid">
+            <div class="expertise-card fade-in">
+                <span class="expertise-icon">🤖</span>
+                <h3>Machine Learning & AI</h3>
+                <p>
+                    Building intelligent systems using supervised and unsupervised learning algorithms. 
+                    Experienced in developing predictive models, classification systems, and clustering solutions.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">Random Forest</span>
+                    <span class="tech-tag">Decision Trees</span>
+                    <span class="tech-tag">K-Means</span>
+                    <span class="tech-tag">Neural Networks</span>
+                </div>
+            </div>
+
+            <div class="expertise-card fade-in">
+                <span class="expertise-icon">🧠</span>
+                <h3>Generative AI & LLMs</h3>
+                <p>
+                    Creating intelligent applications using large language models, RAG systems, and 
+                    agent-based architectures. Specialized in prompt engineering and conversational AI.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">LangChain</span>
+                    <span class="tech-tag">RAG</span>
+                    <span class="tech-tag">Agent AI</span>
+                    <span class="tech-tag">Google Gemini</span>
+                    <span class="tech-tag">Mistral</span>
+                    <span class="tech-tag">FAISS</span>
+                </div>
+            </div>
+
+            <div class="expertise-card fade-in">
+                <span class="expertise-icon">📊</span>
+                <h3>Data Analysis & Visualization</h3>
+                <p>
+                    Extracting meaningful insights from complex datasets through exploratory data 
+                    analysis, statistical modeling, and creating compelling visualizations.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">Matplotlib</span>
+                    <span class="tech-tag">Seaborn</span>
+                    <span class="tech-tag">SQL</span>
+                </div>
+            </div>
+
+            <div class="expertise-card fade-in">
+                <span class="expertise-icon">🚀</span>
+                <h3>Model Deployment & APIs</h3>
+                <p>
+                    Bringing models to production with robust API development, database integration, 
+                    and deployment strategies for real-time predictions.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">REST APIs</span>
+                    <span class="tech-tag">XAMPP</span>
+                </div>
+            </div>
+
+            <div class="expertise-card fade-in">
+                <span class="expertise-icon">🔬</span>
+                <h3>Deep Learning</h3>
+                <p>
+                    Developing advanced neural network architectures for complex pattern recognition, 
+                    NLP tasks, and transformers-based applications.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">ANN</span>
+                    <span class="tech-tag">Transformers</span>
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">Deep Learning</span>
+                </div>
+            </div>
+
+            <div class="expertise-card fade-in">
+                <span class="expertise-icon">💻</span>
+                <h3>Development Tools</h3>
+                <p>
+                    Proficient in modern development environments and version control for 
+                    collaborative software development and project management.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">VS Code</span>
+                    <span class="tech-tag">PyCharm</span>
+                    <span class="tech-tag">Jupyter</span>
+                    <span class="tech-tag">GitHub</span>
+                    <span class="tech-tag">Google Colab</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header fade-in">
+            <div class="section-label">My Work</div>
+            <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-item fade-in">
+                <div class="project-content">
+                    <div class="project-number">01</div>
+                    <h3>RAG Chatbot for Document Querying</h3>
+                    <p>
+                        Developed a sophisticated Retrieval-Augmented Generation chatbot that enables 
+                        intelligent querying of PDF documents using LangChain and Google Gemini. The 
+                        system leverages FAISS for semantic search and maintains conversational context 
+                        for natural interactions.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Google Gemini</span>
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">NLP</span>
+                    </div>
+                </div>
+                <div class="project-visual">💬</div>
+            </div>
+
+            <div class="project-item fade-in">
+                <div class="project-content">
+                    <div class="project-number">02</div>
+                    <h3>Disease Classification System</h3>
+                    <p>
+                        Built an end-to-end machine learning system for disease prediction based on 
+                        patient symptoms. Implemented comprehensive data preprocessing, trained Random 
+                        Forest classifier, and deployed via Flask API with MySQL integration for 
+                        real-time clinical predictions.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Random Forest</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Healthcare AI</span>
+                        <span class="tech-tag">API Development</span>
+                    </div>
+                </div>
+                <div class="project-visual">🏥</div>
+            </div>
+
+            <div class="project-item fade-in">
+                <div class="project-content">
+                    <div class="project-number">03</div>
+                    <h3>AI-Powered Recommendation Chatbot</h3>
+                    <p>
+                        Created an intelligent movie and series recommendation chatbot using LangChain 
+                        with Mistral Nemo 12B. Integrated web search capabilities and applied advanced 
+                        prompt engineering techniques to deliver personalized entertainment suggestions 
+                        with context-aware conversations.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Mistral</span>
+                        <span class="tech-tag">LLM</span>
+                        <span class="tech-tag">Prompt Engineering</span>
+                        <span class="tech-tag">Chatbot</span>
+                    </div>
+                </div>
+                <div class="project-visual">🎬</div>
+            </div>
+
+            <div class="project-item fade-in">
+                <div class="project-content">
+                    <div class="project-number">04</div>
+                    <h3>Loan Eligibility Prediction System</h3>
+                    <p>
+                        Developed a comprehensive loan approval prediction system with extensive 
+                        exploratory data analysis, feature engineering, and model optimization. 
+                        Applied encoding, normalization, and missing value imputation techniques 
+                        to achieve high prediction accuracy with Random Forest classifier.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Random Forest</span>
+                        <span class="tech-tag">EDA</span>
+                        <span class="tech-tag">Feature Engineering</span>
+                        <span class="tech-tag">FinTech</span>
+                        <span class="tech-tag">Model Optimization</span>
+                    </div>
+                </div>
+                <div class="project-visual">💰</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-header fade-in">
+            <div class="section-label">My Journey</div>
+            <h2 class="section-title">Experience & Education</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-year">2024</div>
+                <h3>Data Science Intern</h3>
+                <div class="timeline-company">Universalzhone</div>
+                <ul>
+                    <li>Gained hands-on experience with real-time data science project workflows</li>
+                    <li>Developed machine learning project for Loan Eligibility Prediction</li>
+                    <li>Applied data preprocessing, model building, and comprehensive evaluation techniques</li>
+                    <li>Collaborated with cross-functional teams to deliver data-driven insights</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-year">2023 – 2025</div>
+                <h3>Master's in Data Science</h3>
+                <div class="timeline-company">Annamalai University • CGPA: 8.5</div>
+                <p>
+                    Advanced studies in data science methodologies, machine learning algorithms, 
+                    deep learning, and statistical analysis with focus on practical applications 
+                    and research in emerging AI technologies.
+                </p>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-year">2023</div>
+                <h3>Data Science Certification</h3>
+                <div class="timeline-company">AIT Academy • Grade: A+</div>
+                <p>
+                    Completed comprehensive professional training in data science fundamentals, 
+                    machine learning algorithms, practical implementation, and industry best practices.
+                </p>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-year">2020 – 2023</div>
+                <h3>Bachelor of Science in Computer Science</h3>
+                <div class="timeline-company">Periyar University • CGPA: 7.0</div>
+                <p>
+                    Foundation in computer science principles, programming, algorithms, data structures, 
+                    and computational problem-solving with emphasis on software development.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume">
+        <div class="section-header fade-in">
+            <div class="section-label">Full Details</div>
+            <h2 class="section-title">My Resume</h2>
+        </div>
+        <div class="resume-container fade-in">
+            <div class="resume-header">
+                <h2>Chandru K</h2>
+                <div class="title">Data Scientist</div>
+                <div class="resume-contact">
+                    6379318526 • chandrukunasekaran31@gmail.com<br>
+                    Cuddalore, Tamil Nadu<br>
+                    <a href="https://www.linkedin.com/in/chandru3105/" target="_blank" style="color: var(--gold);">LinkedIn</a> • 
+                    <a href="https://github.com/Chandru8526" target="_blank" style="color: var(--gold);">GitHub</a>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h3>Objective</h3>
+                <p>
+                    To apply my foundational skills in Data Science and Machine Learning to solve real-world problems. 
+                    Eager to contribute to data-driven decision-making in a collaborative environment. Committed to 
+                    continuous learning and professional growth in a dynamic setting.
+                </p>
+            </div>
+
+            <div class="resume-section">
+                <h3>Skills</h3>
+                <div class="skills-list">
+                    <p><strong>Programming Languages:</strong> Python, SQL</p>
+                    <p><strong>Database:</strong> MySQL</p>
+                    <p><strong>AI / Data Science:</strong> Machine Learning, Deep Learning, Gen AI, Agent AI, Statistics</p>
+                    <p><strong>Algorithms:</strong> Linear Regression, Random Forest, Decision Tree, K-Means, ANN, Transformers</p>
+                    <p><strong>Gen AI:</strong> LLM, RAG</p>
+                    <p><strong>Libraries:</strong> LangChain, PyTorch, Scikit-learn, NumPy, Pandas, Matplotlib, Seaborn, Flask</p>
+                    <p><strong>Soft Skills:</strong> Communication, Collaboration, Adaptive and Rapid Learning</p>
+                    <p><strong>Tools & Software:</strong> Visual Studio Code, XAMPP, PyCharm, Spyder, Anaconda, Jupyter Notebook, Google Colab, GitHub</p>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h3>Education</h3>
+                <div class="resume-item">
+                    <h4>Master's in Data Science (2023–2025)</h4>
+                    <div class="resume-meta">Annamalai University • CGPA: 8.5</div>
+                </div>
+                <div class="resume-item">
+                    <h4>Bachelor of Science, Computer Science (2020–2023)</h4>
+                    <div class="resume-meta">Periyar University • CGPA: 7.0</div>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h3>Certifications</h3>
+                <div class="resume-item">
+                    <h4>Data Science Certification (2023)</h4>
+                    <div class="resume-meta">AIT Academy • Grade: A+</div>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h3>Experience</h3>
+                <div class="resume-item">
+                    <h4>Data Science Intern — 2024</h4>
+                    <div class="resume-meta">Universalzhone</div>
+                    <ul>
+                        <li>Learned real-time workflow of data science projects and gained hands-on experience</li>
+                        <li>Done a machine learning project titled Loan Eligibility Prediction using data preprocessing, model building, and evaluation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h3>Project Experience</h3>
+                
+                <div class="resume-item">
+                    <h4>RAG Chatbot for Document Querying</h4>
+                    <ul>
+                        <li>Built a Retrieval-Augmented Generation (RAG) chatbot for querying PDFs using LangChain with Google Gemini</li>
+                        <li>Embedded document text with FAISS for semantic retrieval and maintained conversational memory</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Disease Classification Using Patient Symptoms</h4>
+                    <ul>
+                        <li>Preprocessed Kaggle medical data; trained Random Forest; evaluated with accuracy/precision/recall</li>
+                        <li>Deployed via Flask API integrated with MySQL (XAMPP) for real-time predictions</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Movie and Series Recommendation Chatbot (LLM)</h4>
+                    <ul>
+                        <li>Designed a chatbot using LangChain with Mistral (Mistral Nemo 12B) and web search for movie and web series recommendations</li>
+                        <li>Applied prompt engineering and managed chat history for personalized interactions</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Loan Eligibility Prediction System</h4>
+                    <ul>
+                        <li>Conducted EDA; applied encoding, normalization, and missing-value handling on Kaggle loan dataset</li>
+                        <li>Trained Random Forest; Found best model and evaluation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h3>Languages</h3>
+                <p>English, Tamil</p>
+            </div>
+
+            <div class="download-btn">
+                <a href="https://drive.google.com/file/d/1qu8uQ24KgBJ-QQYrTQJZAfn2TRSIHCWg/view?usp=sharing" target="_blank" class="btn btn-primary">Download Resume PDF</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <div class="section-label">Get In Touch</div>
+            <h2 class="section-title">Let's Connect</h2>
+        </div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <h4>Email</h4>
+                <a href="mailto:chandrukunasekaran31@gmail.com">chandrukunasekaran31@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📱</span>
+                <h4>Phone</h4>
+                <a href="tel:6379318526">6379318526</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <h4>Location</h4>
+                <p>Cuddalore, Tamil Nadu</p>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/chandru3105/" target="_blank" class="social-link" title="LinkedIn">LinkedIn</a>
+            <a href="https://github.com/Chandru8526" target="_blank" class="social-link" title="GitHub">GitHub</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Chandru K. All rights reserved. Crafted with passion for data and innovation.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(a => {
+                a.style.color = '';
+                if (a.getAttribute('href').substring(1) === current) {
+                    a.style.color = 'var(--gold)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
